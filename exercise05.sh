@@ -6,6 +6,14 @@ cat wages.csv | grep -v "gender"| cut -d, -f 1,2 | sort -t "," -k1,1 -k2,2n | tr
 
 
 # Task #2: highest earner, lowest earner and number of females in top ten earners
+echo The gender, years experience, and wage of the highest earner are:
+cat wages.csv |sed 1d |sort -t, -k 4| tail -n 1| cut -d "," -f 1,2,4
+
+echo The gender, years experience, and wage of the lowest earner are:
+cat wages.csv |sed 1d |sort -t, -k 4| head -n 1| cut -d "," -f 1,2,4
+
+echo The number of females in the top ten earners is:
+cat wages.csv |sed 1d |sort -t, -k 4| tail -n 10| grep 'female' | wc -l
 
 
 # Task #3: the effect of graduating college on minimum wage for earners in the dataset
